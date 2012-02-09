@@ -1,0 +1,38 @@
+<div id="world_map">
+  <% @friends.each do |friend| %>
+    <a href="<%= nearest_friends_path(friend.id) %>" id="user<%= friend.id %>" class="person" style="left:<%= (friend.longitude+180)*4 %>px; top:<%= (friend.latitude + 90)*4 %>px">
+      <span>&#9786;</span>
+      <div class="info">
+        <table>
+          <tr>
+            <th>Name:</th>
+            <td><%= friend.name %></td>
+          </tr>
+          <tr>
+            <th>Latitude:</th>
+            <td><%= friend.latitude %></td>
+          </tr>
+          <tr>
+            <th>Longitude:</th>
+            <td><%= friend.longitude %></td>
+          </tr>
+        </table>
+      </div>
+    </a>
+  <% end %>
+</div>
+
+<div id="add_friend">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :name %>
+    <%= f.input :latitude, :label => 'Latitude' %>
+    <%= f.input :longitude, :label => 'Longitude' %>
+    <%= f.submit 'Add friend' %>
+  <% end %>
+
+  <h3>Drag and drop it</h3>
+  <%= form_tag(false, :id=> 'new_user') do -%>
+    <%= text_field_tag 'name', nil, :placeholder => 'Type a name' %>
+  <% end -%>
+  <span id="draggable">&#9786;</span>
+</div>

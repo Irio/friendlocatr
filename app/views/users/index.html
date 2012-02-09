@@ -1,0 +1,25 @@
+<%= link_to 'Show nearest friends', nearest_friends_users_path %>
+
+<% if @users %>
+  <div id="users">
+    <table border="1" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, nearest_friends_path(user.id) %></td>
+            <td><%= user.latitude %></td>
+            <td><%= user.longitude %></td>
+            <td><%= link_to 'Delete', user, confirm: 'Delete?', method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -1,0 +1,72 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+body{
+  padding: 50px;
+}
+
+#world_map, #add_friend{
+  float: left;
+}
+
+#world_map{
+  width: 720px;
+  height: 360px;
+  border: 1px solid black;
+  position: relative;
+  display: inline-block;
+}
+
+#world_map .person{
+  position: absolute;
+  text-decoration: none;
+  font-size: 50px;
+}
+
+#world_map .person .info{
+  background-color: #58CEA5;
+  opacity: 0.8;
+  padding: 10px;
+  font-size: 12px;
+  color: black;
+  display: none;
+}
+
+#world_map .person .info tr > *{
+  width: 90px;
+  text-align: left;
+}
+
+#add_friend{
+  margin-left: 100px;
+  width: 308px;
+}
+
+#add_friend form{
+  display: block;
+  overflow: hidden;
+}
+
+#add_friend input{
+  width: 300px;
+}
+
+#add_friend input[type=submit]{
+  width: auto;
+  float: right;
+  margin-top: 10px;
+}
+
+h3{
+  margin-top: 20px;
+}
+
+#draggable{
+  font-size: 50px;
+  cursor: move;
+}

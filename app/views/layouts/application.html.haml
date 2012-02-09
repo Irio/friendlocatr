@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %title Friendlocatr
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', 'jquery-ui-1.8.17.custom.min', "application"
+    = csrf_meta_tags
+  %body
+    - if notice
+      .notice=notice
+    - if alert
+      .alert=alert
+    = yield

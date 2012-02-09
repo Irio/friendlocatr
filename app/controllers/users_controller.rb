@@ -16,6 +16,11 @@ class UsersController < ApplicationController
 =end
 
   def create_ajax
+    def html_to_real(latitude, longitude)
+      
+    end
+
+
     @user = User.new(:name => params[:name], :latitude => params[:latitude], :longitude => params[:longitude])
     p @user
     if @user.save

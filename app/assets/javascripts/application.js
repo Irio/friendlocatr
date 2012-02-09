@@ -28,7 +28,7 @@ $('#world_map a.person').hover(function() {
 
 
 
-var hasntName = true;
+/*var hasntName = true;
 $("#new_user #name").keydown(function() {
   hasntName = ($(this).val() == '');
   $("#draggable").draggable({ disabled: hasntName });
@@ -38,15 +38,19 @@ $("#draggable").mouseover(function() {
   if (hasntName) {
     alert('Type a name first');
   }
-});
+});*/
+
+$("#draggable").draggable();
 
 $( "#world_map" ).droppable({
   drop: function( event, ui ) {
     //alert(ui.offset.top);
     //alert(ui.offset.left);
+    var latitude = ui.offset.top-90 - parseInt($("#draggable").css('height'))/2;
+    var longitude = ui.offset.left-180 - parseInt($("#draggable").css('width'))/2;
     $.ajax({
       url: 'http://127.0.0.1:3000/user/create',
-      data: { name: $("#new_user #name").val(), latitude: (ui.offset.top/2), longitude: (ui.offset.left/2) },
+      data: { name: $("#new_user #name").val(), latitude: latitude, longitude: longitude },
       success: function() {
         alert('User created!');
         location.reload(true);
